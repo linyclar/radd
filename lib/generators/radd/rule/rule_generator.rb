@@ -13,18 +13,11 @@ module Radd
       source_root File.expand_path("templates", __dir__)
 
       def copy_rule
-        template "rule.erb", generate_file
+        template "rule.erb", generate_file(rule)
       end
       hook_for :test_framework, as: "radd:rule"
 
       private
-
-      def generate_file
-        return @generate_file if @generate_file.present?
-
-        path = features + [rule]
-        @generate_file = "app/domains/#{path.join("/")}.rb"
-      end
 
       def rule
         @rule ||= to_with_name(file_name, "rule")

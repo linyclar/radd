@@ -1,0 +1,28 @@
+Description:
+    イベントを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:event フィーチャー名/イベント名
+
+    bin/rails generate radd:event foo/bar
+    or
+    bin/rails generate radd:event foo_feature/bar_event
+    or
+    bin/rails generate radd:event Foo::Bar
+    or
+    bin/rails generate radd:event FooFeature::BarEvent
+
+    These will create:
+        app/domains/foo_feature/bar_event.rb
+
+    bin/rails generate radd:event イベント名
+
+    bin/rails generate radd:event bar
+
+    This will create:
+        app/domains/bar_event.rb
+
+    bin/rails generate radd:event foo/bar [value1,value2,...]
+
+    value1,value2,...にはイベントの保持する値を指定する。
+    コンストラクタの引数などに追加される。

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Radd
+  # 全体共通で利用するヘルパーメソッド
   module CommonConcern
     private
 

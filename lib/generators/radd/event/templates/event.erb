@@ -1,0 +1,9 @@
+<%- module_features do -%>
+  class <%= cam_event %>
+    <%- if attr_accessor_params.present? -%>
+      <%- %><%= indent(attr_accessor_params, 4) %>
+
+    <%- end -%>
+    <%- %><%= indent(def_initialize, 4) -%>
+  end
+<% end -%>

@@ -44,6 +44,39 @@ RSpec.describe Radd::FeatureConcern do
     end
   end
 
+  describe "#generate_file" do
+    shared_examples "生成先のパスが返る" do |rule|
+      let(:rule_name) { rule }
+      let(:path) { "app/domains#{feature_path}/calc_rule.rb" }
+      it { expect(generator.send(:generate_file, "calc_rule")).to eq path }
+    end
+
+    context "featureなしの場合" do
+      let(:feature_path) { "" }
+
+      %w[calc calc_rule Calc CalcRule].each do |rule_name|
+        context "#{rule_name}が指定された場合" do
+          it_behaves_like("生成先のパスが返る", rule_name)
+        end
+      end
+    end
+
+    context "featureありの場合" do
+      let(:feature_path) { "/accounting_feature" }
+
+      %w[calc calc_rule].each do |rule_name|
+        context "accounting_feature/#{rule_name}が指定された場合" do
+          it_behaves_like("生成先のパスが返る", "accounting_feature/#{rule_name}")
+        end
+      end
+      %w[Calc CalcRule].each do |rule_name|
+        context "AccountingFeature::#{rule_name}が指定された場合" do
+          it_behaves_like("生成先のパスが返る", "AccountingFeature::#{rule_name}")
+        end
+      end
+    end
+  end
+
   # テストが難しいため
   # spec/generators/radd/rule_generator_spec.rbの
   # copy_ruleメソッドのテストで間接的にテストしたことにする

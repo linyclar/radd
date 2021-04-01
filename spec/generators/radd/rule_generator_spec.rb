@@ -34,47 +34,14 @@ RSpec.describe Radd::Generators::RuleGenerator, type: :generator do
     end
   end
 
-  describe "#generate_file" do
-    shared_examples "生成先のパスが返る" do |rule_name|
-      let(:rule) { rule_name }
-      let(:path) { "app/domains#{feature_path}/calc_rule.rb" }
-      it { expect(generator.send(:generate_file)).to eq path }
-    end
-
-    context "featureなしの場合" do
-      let(:feature_path) { "" }
-
-      %w[calc calc_rule Calc CalcRule].each do |rule_name|
-        context "#{rule_name}が指定された場合" do
-          it_behaves_like("生成先のパスが返る", rule_name)
-        end
-      end
-    end
-
-    context "featureありの場合" do
-      let(:feature_path) { "/accounting_feature" }
-
-      %w[calc calc_rule].each do |rule_name|
-        context "accounting_feature/#{rule_name}が指定された場合" do
-          it_behaves_like("生成先のパスが返る", "accounting_feature/#{rule_name}")
-        end
-      end
-      %w[Calc CalcRule].each do |rule_name|
-        context "AccountingFeature::#{rule_name}が指定された場合" do
-          it_behaves_like("生成先のパスが返る", "AccountingFeature::#{rule_name}")
-        end
-      end
-    end
-  end
-
   describe "#copy_rule" do
-    let(:generated_files) { generator.send(:generate_file) }
+    let(:generated_files) { generator.send(:generate_file, generator.send(:rule)) }
 
     shared_examples "ファイルが生成される" do |rule_name, fixture|
       let(:rule) { rule_name }
       it do
         generator.copy_rule
-        expect(generator.send(:generate_file)).to generated_eq fixture
+        expect(generator.send(:generate_file, generator.send(:rule))).to generated_eq fixture
       end
     end
     context "bin/rails g radd:rule calc" do

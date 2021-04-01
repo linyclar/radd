@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Radd
+  # コンストラクタに引数を指定する場合に利用するヘルパーメソッド
   module ParamsOptionConcern
     def self.included(klass)
       klass.argument :params_option, required: false
