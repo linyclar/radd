@@ -1,0 +1,28 @@
+Description:
+    ルールを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:rule フィーチャー名/ルール名
+
+    bin/rails generate radd:rule foo/bar
+    or
+    bin/rails generate radd:rule foo_feature/bar_rule
+    or
+    bin/rails generate radd:rule Foo::Bar
+    or
+    bin/rails generate radd:rule FooFeature::BarRule
+
+    These will create:
+        app/domains/foo_feature/bar_rule.rb
+
+    bin/rails generate radd:rule ルール名
+
+    bin/rails generate radd:rule bar
+
+    This will create:
+        app/domains/bar_rule.rb
+
+    bin/rails generate radd:rule foo/bar [value1,value2,...]
+
+    value1,value2,...にはルールの保持する値を指定する。
+    コンストラクタの引数などに追加される。

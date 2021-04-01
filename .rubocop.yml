@@ -1,5 +1,19 @@
+require:
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-rake
+
 AllCops:
   TargetRubyVersion: 2.4
+  NewCops: enable
+  # fixturesを追加
+  Exclude:
+    - 'spec/fixtures/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - '.git/**/*'
 
 Style/StringLiterals:
   Enabled: true
@@ -11,3 +25,23 @@ Style/StringLiteralsInInterpolation:
 
 Layout/LineLength:
   Max: 120
+
+# 日本語コメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+# 日本語対応のため無効化
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4
+
+# RSpecでのブロック行数チェックを無効化
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/generators/**/*'
