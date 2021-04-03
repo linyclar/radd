@@ -1,0 +1,29 @@
+Description:
+    エンティティを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:entity フィーチャー名/エンティティ名
+
+    bin/rails generate radd:entity foo/bar
+    or
+    bin/rails generate radd:entity foo_feature/bar
+    or
+    bin/rails generate radd:entity Foo::Bar
+    or
+    bin/rails generate radd:entity FooFeature::Bar
+
+    These will create:
+        app/domains/foo_feature/bar.rb
+
+    bin/rails generate radd:entity エンティティ名
+
+    bin/rails generate radd:entity bar
+
+    This will create:
+        app/domains/bar.rb
+
+    bin/rails generate radd:entity foo/bar -m bar_model -d field1,field2
+
+Options:
+    -m [--model] モデル名              # 指定ActiveRecordモデルにマッパーを追加
+    -d [--delegate] field1,field2,...  # delegateするフィールド
