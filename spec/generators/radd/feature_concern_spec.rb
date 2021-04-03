@@ -77,8 +77,70 @@ RSpec.describe Radd::FeatureConcern do
     end
   end
 
-  # テストが難しいため
-  # spec/generators/radd/rule_generator_spec.rbの
-  # copy_ruleメソッドのテストで間接的にテストしたことにする
-  # describe '#module_features'
+  # rubocop:disable RSpec/SubjectStub
+  describe "#module_features" do
+    let(:body) do
+      <<~BODY
+        class Foo
+          def initialize
+          end
+        end
+      BODY
+    end
+
+    before do
+      allow(generator).to receive(:capture).and_return(generator.send(:indent, body))
+      allow(generator).to receive(:concat).and_return("")
+    end
+
+    context "featureなしの場合" do
+      let(:rule_name) { "calc" }
+
+      it "featureモジュールなしのクラス定義文字列が返る" do
+        generator.send(:module_features)
+        expect(generator).to have_received(:concat).with(body.chomp)
+      end
+    end
+
+    context "featureが1段ある場合" do
+      let(:rule_name) { "accounting/calc" }
+      let(:result) do
+        <<~BODY
+          module AccountingFeature
+            class Foo
+              def initialize
+              end
+            end
+          end
+        BODY
+      end
+
+      it "featureモジュールありのクラス定義文字列が返る" do
+        generator.send(:module_features)
+        expect(generator).to have_received(:concat).with(result.chomp)
+      end
+    end
+
+    context "featureが2段ある場合" do
+      let(:rule_name) { "accounting/common/calc" }
+      let(:result) do
+        <<~BODY
+          module AccountingFeature
+            module CommonFeature
+              class Foo
+                def initialize
+                end
+              end
+            end
+          end
+        BODY
+      end
+
+      it "featureモジュールありのクラス定義文字列が返る" do
+        generator.send(:module_features)
+        expect(generator).to have_received(:concat).with(result.chomp)
+      end
+    end
+  end
+  # rubocop:enable RSpec/SubjectStub
 end
