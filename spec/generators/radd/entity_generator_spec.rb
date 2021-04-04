@@ -112,19 +112,6 @@ RSpec.describe Radd::Generators::EntityGenerator, type: :generator do
 
       it_behaves_like("ファイルが生成される", "accounting_feature/title", "entity/accounting_feature/title_with_delegate.rb")
     end
-
-    context "bin/rails g radd:entity title value1,value2" do
-      let(:values) { "value1,value2" }
-
-      it_behaves_like("ファイルが生成される", "title", "entity/title_with_values.rb")
-    end
-
-    context "bin/rails g radd:entity accounting_feature/title value1,value2" do
-      let(:values) { "value1,value2" }
-
-      it_behaves_like("ファイルが生成される", "accounting_feature/title",
-                      "entity/accounting_feature/title_with_values.rb")
-    end
   end
 
   # rubocop:disable RSpec/SubjectStub
