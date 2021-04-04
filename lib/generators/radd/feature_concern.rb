@@ -28,7 +28,11 @@ module Radd
       return @generate_file if @generate_file.present?
 
       path = features + [file]
-      @generate_file = "app/domains/#{path.join("/")}.rb"
+      @generate_file = "app/#{dir_path}/#{path.join("/")}.rb"
+    end
+
+    def dir_path
+      "domains"
     end
   end
 end

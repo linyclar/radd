@@ -1,0 +1,28 @@
+Description:
+    ViewRuleを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:view:rule フィーチャー名/ルール名
+
+    bin/rails generate radd:view:rule foo/bar
+    or
+    bin/rails generate radd:view:rule foo_feature/bar_view_rule
+    or
+    bin/rails generate radd:view:rule Foo::Bar
+    or
+    bin/rails generate radd:view:rule FooFeature::BarViewRule
+
+    These will create:
+        app/view_models/foo_feature/bar_view_rule.rb
+
+    bin/rails generate radd:view:rule ルール名
+
+    bin/rails generate radd:view:rule bar
+
+    This will create:
+        app/view_models/bar_view_rule.rb
+
+    bin/rails generate radd:view:rule foo/bar [value1,value2,...]
+
+    value1,value2,...にはルールの保持する値を指定する。
+    コンストラクタの引数などに追加される。

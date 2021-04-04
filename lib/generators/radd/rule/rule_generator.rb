@@ -2,6 +2,7 @@
 
 require "generators/radd/feature_concern"
 require "generators/radd/params_option_concern"
+require "generators/radd/rule_concern"
 
 module Radd
   module Generators
@@ -9,6 +10,7 @@ module Radd
     class RuleGenerator < Rails::Generators::NamedBase
       include Radd::FeatureConcern
       include Radd::ParamsOptionConcern
+      include Radd::RuleConcern
 
       source_root File.expand_path("templates", __dir__)
 
@@ -19,12 +21,8 @@ module Radd
 
       private
 
-      def rule
-        @rule ||= to_with_name(file_name, "rule")
-      end
-
-      def cam_rule
-        @cam_rule ||= rule.camelize
+      def file_suffix
+        "rule"
       end
     end
   end
