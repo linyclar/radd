@@ -2,6 +2,7 @@
 
 require "generators/radd/feature_concern"
 require "generators/radd/delegate_option_concern"
+require "generators/radd/entity_concern"
 
 module Radd
   module Generators
@@ -9,6 +10,7 @@ module Radd
     class EntityGenerator < Rails::Generators::NamedBase
       include Radd::FeatureConcern
       include Radd::DelegateOptionConcern
+      include Radd::EntityConcern
 
       source_root File.expand_path("templates", __dir__)
 
@@ -51,14 +53,6 @@ module Radd
         features_array.map! { |f| f.sub(/_feature\z/, "") }
         @features_string = (features_array + [last]).join("_")
         @features_string = @features_string.presence || "entity"
-      end
-
-      def entity
-        @entity ||= file_name
-      end
-
-      def cam_entity
-        @cam_entity ||= entity.camelize
       end
     end
   end
