@@ -16,8 +16,7 @@ module Radd
         source_root File.expand_path("templates", __dir__)
 
         def copy_rule
-          path = features + [rule]
-          template "rule.erb", "app/view_models/#{path.join("/")}.rb"
+          template "rule.erb", generate_file(rule)
         end
         hook_for :test_framework, as: "radd:view:rule"
 

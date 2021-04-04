@@ -16,8 +16,7 @@ module Radd
         source_root File.expand_path("templates", __dir__)
 
         def copy_state
-          path = features + [state]
-          template "state.erb", "app/view_models/#{path.join("/")}.rb"
+          template "state.erb", generate_file(state)
         end
         hook_for :test_framework, as: "radd:view:state"
 
