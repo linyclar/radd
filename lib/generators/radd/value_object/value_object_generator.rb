@@ -2,6 +2,7 @@
 
 require "generators/radd/feature_concern"
 require "generators/radd/params_option_concern"
+require "generators/radd/value_object_concern"
 
 module Radd
   module Generators
@@ -9,6 +10,7 @@ module Radd
     class ValueObjectGenerator < Rails::Generators::NamedBase
       include Radd::FeatureConcern
       include Radd::ParamsOptionConcern
+      include Radd::ValueObjectConcern
 
       source_root File.expand_path("templates", __dir__)
 
@@ -19,12 +21,8 @@ module Radd
 
       private
 
-      def value_object
-        @value_object ||= to_with_name(file_name, "value_object")
-      end
-
-      def cam_value_object
-        @cam_value_object ||= value_object.camelize
+      def file_suffix
+        "value_object"
       end
     end
   end

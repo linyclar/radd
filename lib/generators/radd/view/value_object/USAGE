@@ -1,0 +1,28 @@
+Description:
+    ViewValueObjectを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:view:value_object フィーチャー名/バリューオブジェクト名
+
+    bin/rails generate radd:view:value_object foo/bar
+    or
+    bin/rails generate radd:view:value_object foo_feature/bar_view_value_object
+    or
+    bin/rails generate radd:view:value_object Foo::Bar
+    or
+    bin/rails generate radd:view:value_object FooFeature::BarViewValueObject
+
+    These will create:
+        app/view_models/foo_feature/bar_view_value_object.rb
+
+    bin/rails generate radd:view:value_object バリューオブジェクト名
+
+    bin/rails generate radd:view:value_object bar
+
+    This will create:
+        app/view_models/bar_view_value_object.rb
+
+    bin/rails generate radd:view:value_object foo/bar [value1,value2,...]
+
+    value1,value2,...にはバリューオブジェクトの保持する値を指定する。
+    コンストラクタの引数などに追加される。
