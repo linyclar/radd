@@ -1,0 +1,30 @@
+Description:
+    ユースケースを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:use_case サブジェクト名/アクター名/ユースケース名
+
+    bin/rails generate radd:use_case foo/bar/baz
+    or
+    bin/rails generate radd:use_case foo_subject/bar_actor/baz_use_case
+    or
+    bin/rails generate radd:use_case Foo::Bar::Baz
+    or
+    bin/rails generate radd:use_case FooSubject::BarActor::BazUseCase
+
+    These will create:
+        app/use_cases/foo_subject/bar_actor/baz_use_case.rb
+
+    bin/rails generate radd:use_case アクター名/ユースケース名
+
+    bin/rails generate radd:use_case foo/bar
+
+    This will create:
+        app/use_cases/foo_actor/bar_use_case.rb
+
+    bin/rails generate radd:use_case ユースケース名
+
+    bin/rails generate radd:use_case foo
+
+    This will create:
+        app/use_cases/foo_use_case.rb
