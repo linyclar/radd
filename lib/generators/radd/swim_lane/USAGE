@@ -1,0 +1,23 @@
+Description:
+    スイムレーンを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:swim_lane サブジェクト名/スイムレーン名/アクター名
+
+    bin/rails generate radd:swim_lane foo/bar/baz
+    or
+    bin/rails generate radd:swim_lane foo_subject/bar_swim_lane/baz_actor
+    or
+    bin/rails generate radd:swim_lane Foo::Bar::Baz
+    or
+    bin/rails generate radd:swim_lane FooSubject::BarSwimLane::BazActor
+
+    These will create:
+        app/use_cases/foo_subject/bar_swim_lane/baz_actor.rb
+
+    bin/rails generate radd:swim_lane スイムレーン名/アクター名
+
+    bin/rails generate radd:swim_lane foo/bar
+
+    This will create:
+        app/use_cases/foo_swim_lane/bar_actor.rb
