@@ -1,0 +1,12 @@
+<%- module_features do -%>
+  class <%= cam_model %>
+    attr_accessor :raw
+    <%- if delegate_to.present? -%>
+      <%- %><%= indent(delegate_to, 4) -%>
+    <%- end -%>
+
+    def initialize(raw)
+      self.raw = raw
+    end
+  end
+<% end -%>

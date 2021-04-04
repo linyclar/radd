@@ -1,0 +1,28 @@
+Description:
+    ViewModelを作成するジェネレータ
+
+Examples:
+    bin/rails generate radd:view:model フィーチャー名/ViewModel名
+
+    bin/rails generate radd:view:model foo/bar
+    or
+    bin/rails generate radd:view:model foo_feature/bar_view_model
+    or
+    bin/rails generate radd:view:model Foo::Bar
+    or
+    bin/rails generate radd:view:model FooFeature::BarViewModel
+
+    These will create:
+        app/view_models/foo_feature/bar_view_model.rb
+
+    bin/rails generate radd:view:model ViewModel名
+
+    bin/rails generate radd:view:model bar
+
+    This will create:
+        app/view_models/bar_view_model.rb
+
+    bin/rails generate radd:view:model foo/bar -d field1,field2
+
+Options:
+    -d [--delegate] field1,field2,...  # delegateするフィールド
