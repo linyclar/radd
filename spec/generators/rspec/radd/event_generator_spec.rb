@@ -9,7 +9,7 @@ RSpec.describe Rspec::Radd::Generators::EventGenerator, type: :generator do
   let(:event) { "settlement" }
 
   describe "#generate_file" do
-    it '生成されるファイル名が_spec.rbで終わっている' do
+    it "生成されるファイル名が_spec.rbで終わっている" do
       expect(generator.send(:generate_file, generator.send(:event))).to match(/_spec\.rb\z/)
     end
   end
