@@ -2,6 +2,7 @@
 
 require "generators/radd/feature_concern"
 require "generators/radd/params_option_concern"
+require "generators/radd/state_concern"
 
 module Radd
   module Generators
@@ -9,6 +10,7 @@ module Radd
     class StateGenerator < Rails::Generators::NamedBase
       include Radd::FeatureConcern
       include Radd::ParamsOptionConcern
+      include Radd::StateConcern
 
       source_root File.expand_path("templates", __dir__)
 
@@ -19,12 +21,8 @@ module Radd
 
       private
 
-      def state
-        @state ||= to_with_name(file_name, "state")
-      end
-
-      def cam_state
-        @cam_state ||= state.camelize
+      def file_suffix
+        "state"
       end
     end
   end
