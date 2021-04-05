@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require "generators/radd/use_case_concern"
+require "generators/radd/use_case_generator_concern"
 
 module Radd
   module Generators
     # SwimLaneクラスのジェネレータ
     class SwimLaneGenerator < Rails::Generators::NamedBase
-      include Radd::UseCaseConcern
+      include Radd::UseCaseGeneratorConcern
 
       source_root File.expand_path("templates", __dir__)
 
