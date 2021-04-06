@@ -1,38 +1,53 @@
 # Radd
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/radd`. To experiment with that code, run `bin/console` for an interactive prompt.
+要求分析駆動設計用のジェネレータGem。
 
-TODO: Delete this and the text above, and describe your gem
+要求分析駆動設計: https://linyclar.github.io/software_development/requirements_analysis_driven_desgin/
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'radd'
+gem 'radd',  github: 'linyclar/radd'
 ```
 
 And then execute:
 
-    $ bundle install
+    $ bundle
 
-Or install it yourself as:
-
-    $ gem install radd
 
 ## Usage
 
-TODO: Write usage instructions here
+以下のジェネレータタスクが追加されるので、`bin/rails g radd:rule accounting/calc`のようにして利用してください。各タスクの詳細については`bin/rails g radd:rule --help`のようにするか、各タスクの`USAGE`ファイル（`lib/generators/radd/**/USAGE`）を参照してください。
 
-## Development
+```
+Radd:
+  radd:entity
+  radd:event
+  radd:rule
+  radd:state
+  radd:swim_lane
+  radd:use_case
+  radd:value_object
+  radd:view:model
+  radd:view:rule
+  radd:view:state
+  radd:view:value_object
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/radd.
+Rspec:
+  rspec:radd:entity
+  rspec:radd:event
+  rspec:radd:rule
+  rspec:radd:state
+  rspec:radd:swim_lane
+  rspec:radd:use_case
+  rspec:radd:value_object
+  rspec:radd:view:model
+  rspec:radd:view:rule
+  rspec:radd:view:state
+  rspec:radd:view:value_object
+```
 
 ## License
 
