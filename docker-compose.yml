@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      HISTFILE: "/app/log/.bash_history"
+      HISTFILE: "/app/tmp/.bash_history"
     tty: true
     volumes:
       - .:/app
